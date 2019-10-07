@@ -11,8 +11,8 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AndroidSupportInjectionModule::class,
-    ApplicationModule::class, ActivityBindingModule::class,
-    FragmentBindingModule::class, ViewModelFactoryModule::class, NetworkModule::class])
+    ApplicationModule::class, ActivityBindingModule::class,DataModule::class,
+    ViewModelFactoryModule::class, NetworkModule::class])
 interface PixabayApplicationComponent : AndroidInjector<DaggerApplication> {
 
     @Component.Builder
