@@ -28,7 +28,7 @@ class FeedListAdapter : ListAdapter<PixabayImage,
             val clickedImage = getItem(viewHolder.adapterPosition)
             pixabayImagesListClickHandler?.onPixabayImageClicked(clickedImage)
         }
-        return PixabayImageItemViewHolder(view)
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: PixabayImageItemViewHolder, position: Int) {
