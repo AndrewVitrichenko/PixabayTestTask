@@ -2,7 +2,6 @@ package com.pixabay.testtask.data.mapper
 
 import com.pixabay.testtask.data.entity.PixabayImage
 import com.pixabay.testtask.data.entity.PixabayImageApi
-import com.pixabay.testtask.data.entity.PixabayImageLocal
 import com.pixabay.testtask.data.entity.list.PixabayImagesList
 import com.pixabay.testtask.data.entity.list.PixabayImagesListApi
 
@@ -14,19 +13,19 @@ fun PixabayImagesListApi.toPixabayImagesList() : PixabayImagesList{
 
 fun PixabayImageApi.toPixabayImage() : PixabayImage{
     return PixabayImage(
-        id = id,
-        pageURL = pageURL,
-        type = type,
-        tags = tags,
-        previewURL = previewURL,
+        id = id ?: "N/A",
+        pageURL = pageURL ?: "N/A" ,
+        type = type ?: "N/A",
+        tags = tags ?: "N/A",
+        previewURL = previewURL ?: "N/A",
         previewWidth = previewWidth,
         previewHeight = previewHeight,
-        webformatURL = webformatURL,
+        webformatURL = webformatURL ?: "N/A",
         webformatWidth = webformatWidth,
         webformatHeight = webformatHeight,
-        largeImageURL = largeImageURL,
-        fullHDURL = fullHDURL,
-        imageURL = imageURL,
+        largeImageURL = largeImageURL ?: "N/A",
+        fullHDURL = fullHDURL ?: "N/A",
+        imageURL = imageURL ?: "N/A",
         imageWidth = imageWidth,
         imageHeight = imageHeight,
         imageSize = imageSize,
@@ -35,66 +34,8 @@ fun PixabayImageApi.toPixabayImage() : PixabayImage{
         favorites = favorites,
         likes = likes,
         comments = comments,
-        userId = userId,
-        user = user,
-        userImageURL = userImageURL
-    )
-}
-
-fun PixabayImageLocal.toPixabayImage() : PixabayImage{
-    return PixabayImage(
-        id = id,
-        pageURL = pageURL,
-        type = type,
-        tags = tags,
-        previewURL = previewURL,
-        previewWidth = previewWidth,
-        previewHeight = previewHeight,
-        webformatURL = webformatURL,
-        webformatWidth = webformatWidth,
-        webformatHeight = webformatHeight,
-        largeImageURL = largeImageURL,
-        fullHDURL = fullHDURL,
-        imageURL = imageURL,
-        imageWidth = imageWidth,
-        imageHeight = imageHeight,
-        imageSize = imageSize,
-        views = views,
-        downloads = downloads,
-        favorites = favorites,
-        likes = likes,
-        comments = comments,
-        userId = userId,
-        user = user,
-        userImageURL = userImageURL
-    )
-}
-
-fun PixabayImage.toPixabayImageLocal() : PixabayImageLocal{
-    return PixabayImageLocal(
-        id = id,
-        pageURL = pageURL,
-        type = type,
-        tags = tags,
-        previewURL = previewURL,
-        previewWidth = previewWidth,
-        previewHeight = previewHeight,
-        webformatURL = webformatURL,
-        webformatWidth = webformatWidth,
-        webformatHeight = webformatHeight,
-        largeImageURL = largeImageURL,
-        fullHDURL = fullHDURL,
-        imageURL = imageURL,
-        imageWidth = imageWidth,
-        imageHeight = imageHeight,
-        imageSize = imageSize,
-        views = views,
-        downloads = downloads,
-        favorites = favorites,
-        likes = likes,
-        comments = comments,
-        userId = userId,
-        user = user,
-        userImageURL = userImageURL
+        userId = userId ?: "N/A",
+        user = user ?: "N/A",
+        userImageURL = userImageURL ?: "N/A"
     )
 }

@@ -4,31 +4,31 @@ import com.google.gson.annotations.SerializedName
 
 data class PixabayImageApi(
     @SerializedName("id")
-    val id : String,
+    val id : String?,
     @SerializedName("pageURL")
-    val pageURL : String,
+    val pageURL : String?,
     @SerializedName("type")
-    val type : String,
+    val type : String?,
     @SerializedName("tags")
-    val tags : String,
+    val tags : String?,
     @SerializedName("previewURL")
-    val previewURL : String,
+    val previewURL : String?,
     @SerializedName("previewWidth")
     val previewWidth : Int,
     @SerializedName("previewHeight")
     val previewHeight : Int,
     @SerializedName("webformatURL")
-    val webformatURL : String,
+    val webformatURL : String?,
     @SerializedName("webformatWidth")
     val webformatWidth : Int,
     @SerializedName("webformatHeight")
     val webformatHeight : Int,
     @SerializedName("largeImageURL")
-    val largeImageURL : String,
+    val largeImageURL : String?,
     @SerializedName("fullHDURL")
-    val fullHDURL : String,
+    val fullHDURL : String?,
     @SerializedName("imageURL")
-    val imageURL : String,
+    val imageURL : String?,
     @SerializedName("imageWidth")
     val imageWidth : Int,
     @SerializedName("imageHeight")
@@ -46,9 +46,9 @@ data class PixabayImageApi(
     @SerializedName("comments")
     val comments : Int,
     @SerializedName("user_id")
-    val userId : String,
+    val userId : String?,
     @SerializedName("user")
-    val user : String,
+    val user : String?,
     @SerializedName("userImageURL")
-    val userImageURL : String
+    val userImageURL : String?
 )
