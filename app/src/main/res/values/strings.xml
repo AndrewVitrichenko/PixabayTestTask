@@ -4,4 +4,7 @@
     <!-- Error messages -->
     <string name="error_no_results">No results.</string>
     <string name="error_empty_text">Empty text.</string>
+
+    <!-- Test strings -->
+    <string name="test_string_flowers">flowers</string>
 </resources>

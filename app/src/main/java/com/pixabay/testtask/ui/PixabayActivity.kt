@@ -12,7 +12,10 @@ class PixabayActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        showFragment(FeedFragment.newInstance(),true)
+        if (savedInstanceState == null){
+            val initialSearchText = getString(R.string.test_string_flowers)
+            showFragment(FeedFragment.newInstance(initialSearchText),true)
+        }
     }
 
 
