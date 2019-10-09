@@ -60,8 +60,7 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         initSearchView()
         if (arguments != null) {
             val initialSearchText = arguments!!.getString(INITIAL_SEARCH_TEXT)
-            searchView.setQuery(initialSearchText,false)
-            feedViewModel.searchImagesByText(initialSearchText)
+            searchView.setQuery(initialSearchText,true)
             arguments = null
         }
         searchView.onActionViewExpanded()

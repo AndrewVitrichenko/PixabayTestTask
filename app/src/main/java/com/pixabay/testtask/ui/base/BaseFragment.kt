@@ -55,6 +55,13 @@ abstract class BaseFragment : DaggerFragment() {
         keyboardHandler?.hideKeyboard()
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        navigationHandler = null
+        messageHandler = null
+        keyboardHandler = null
+    }
+
     abstract fun getFragmentTag(): String
 
 }
