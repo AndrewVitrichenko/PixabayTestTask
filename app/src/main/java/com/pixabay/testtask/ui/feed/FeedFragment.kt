@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -55,21 +56,31 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         listenViewModelEvents()
-        searchButton.setOnClickListener {
-            val text = searchEditText.text.toString()
-            if (!text.isEmpty()){
-                feedListAdapter.setData(ArrayList())
-            }
-            hideKeyboard()
-            feedViewModel.searchImagesByText(searchEditText.text.toString())
-        }
+        initSeachView()
         if (arguments != null) {
             val initialSearchText = arguments!!.getString(INITIAL_SEARCH_TEXT)
-            searchEditText.setText(initialSearchText)
-            searchButton.performClick()
+            searchView.setQuery(initialSearchText,false)
+            feedViewModel.searchImagesByText(initialSearchText)
             arguments = null
         }
+        searchView.onActionViewExpanded()
 
+    }
+
+    private fun initSeachView() {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(newText: String?): Boolean  = false
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val text = searchView.query.toString()
+                if (text.isNotEmpty()){
+                    feedListAdapter.setData(ArrayList())
+                }
+                hideKeyboard()
+                feedViewModel.searchImagesByText(text)
+                return false
+            }
+        })
     }
 
     override fun onPixabayImageClicked(pixabayImage: PixabayImage) {
