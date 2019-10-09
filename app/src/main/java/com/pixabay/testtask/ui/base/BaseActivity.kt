@@ -3,6 +3,7 @@ package com.pixabay.testtask.ui.base
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.pixabay.testtask.R
 import com.pixabay.testtask.interfaces.IFragmentNavigationHandler
 import com.pixabay.testtask.interfaces.IKeyboardHandler
 import com.pixabay.testtask.interfaces.IMessageHandler
@@ -17,10 +18,12 @@ abstract class BaseActivity : DaggerAppCompatActivity(), IFragmentNavigationHand
             if (fragment == null) {
                 if (!addToBackStack) {
                     it.beginTransaction()
+                        .setCustomAnimations(R.anim.slide_up, R.anim.slide_down)
                         .replace(getFragmentContainer(), fragmentToShow, fragmentToShow.getFragmentTag())
                         .commit()
                 } else {
                     it.beginTransaction()
+                        .setCustomAnimations(R.anim.slide_up, R.anim.slide_down)
                         .replace(getFragmentContainer(), fragmentToShow, fragmentToShow.getFragmentTag())
                         .addToBackStack(fragmentToShow.getFragmentTag())
                         .commit()
