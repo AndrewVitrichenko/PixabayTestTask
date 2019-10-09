@@ -1,4 +1,4 @@
-package com.pixabay.testtask.util
+package com.pixabay.testtask.data.datasource.scheduler
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

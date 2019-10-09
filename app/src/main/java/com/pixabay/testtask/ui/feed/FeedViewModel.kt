@@ -7,8 +7,8 @@ import com.pixabay.testtask.R
 import com.pixabay.testtask.data.datasource.PixabayDataSource
 import com.pixabay.testtask.data.entity.PixabayImage
 import com.pixabay.testtask.util.ResourceUtil
-import com.pixabay.testtask.util.Result
-import com.pixabay.testtask.util.SchedulerProvider
+import com.pixabay.testtask.data.entity.Result
+import com.pixabay.testtask.data.datasource.scheduler.SchedulerProvider
 import com.pixabay.testtask.util.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo

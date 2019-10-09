@@ -1,4 +1,4 @@
-package com.pixabay.testtask.util
+package com.pixabay.testtask.data.entity
 
 sealed class Result<out R> {
 

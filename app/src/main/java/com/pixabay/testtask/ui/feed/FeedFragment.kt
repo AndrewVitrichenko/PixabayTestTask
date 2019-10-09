@@ -15,9 +15,9 @@ import com.pixabay.testtask.data.entity.PixabayImage
 import com.pixabay.testtask.ui.base.BaseFragment
 import com.pixabay.testtask.ui.details.DetailsFragment
 import com.pixabay.testtask.ui.feed.list.FeedListAdapter
-import com.pixabay.testtask.util.getData
-import com.pixabay.testtask.util.getMessage
-import com.pixabay.testtask.util.getThrowable
+import com.pixabay.testtask.data.entity.getData
+import com.pixabay.testtask.data.entity.getMessage
+import com.pixabay.testtask.data.entity.getThrowable
 import kotlinx.android.synthetic.main.fragment_feed.*
 import javax.inject.Inject
 

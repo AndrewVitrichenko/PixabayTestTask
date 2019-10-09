@@ -7,8 +7,8 @@ import com.pixabay.testtask.data.datasource.PixabayDataSource
 import com.pixabay.testtask.data.entity.PixabayImage
 import com.pixabay.testtask.ui.feed.FeedViewModel
 import com.pixabay.testtask.util.ResourceUtil
-import com.pixabay.testtask.util.Result
-import com.pixabay.testtask.util.SchedulerProvider
+import com.pixabay.testtask.data.entity.Result
+import com.pixabay.testtask.data.datasource.scheduler.SchedulerProvider
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import junit.framework.Assert.*

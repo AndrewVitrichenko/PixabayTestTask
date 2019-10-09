@@ -1,11 +1,9 @@
 package com.pixabay.testtask.ui.base
 
 import android.content.Context
-import android.widget.Toast
 import com.pixabay.testtask.interfaces.IFragmentNavigationHandler
 import com.pixabay.testtask.interfaces.IKeyboardHandler
 import com.pixabay.testtask.interfaces.IMessageHandler
-import com.pixabay.testtask.util.Result
 import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment : DaggerFragment() {
