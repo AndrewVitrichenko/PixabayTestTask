@@ -54,8 +54,18 @@ class DetailsFragment : BaseFragment() {
         }
         Glide.with(context).load(pixabayImage?.getImage()).into(pixabayImageView)
         Glide.with(context).load(pixabayImage?.userImageURL).into(userImageView)
-        userNameTextView.text = pixabayImage?.user
-        tagsTextView.text = pixabayImage?.tags
+        userNameTextView.text = String.format(
+            context?.getString(
+                R.string.user_name_item,
+                pixabayImage?.user
+            ).toString()
+        )
+        tagsTextView.text = String.format(
+            context?.getString(
+                R.string.tags_item,
+                pixabayImage?.tags
+            ).toString()
+        )
         likeCountTextView.text = pixabayImage?.likes.toString()
         favoriteCountTextView.text = pixabayImage?.favorites.toString()
         commentCountTextView.text = pixabayImage?.comments.toString()

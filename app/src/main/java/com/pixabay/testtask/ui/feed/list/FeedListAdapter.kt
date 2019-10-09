@@ -12,12 +12,12 @@ import kotlinx.android.synthetic.main.list_feed_item.view.*
 
 
 class FeedListAdapter : RecyclerView.Adapter<FeedListAdapter.PixabayImageItemViewHolder>() {
-    override fun getItemCount(): Int  = imagesList.size
+    override fun getItemCount(): Int = imagesList.size
 
-    private var pixabayImagesListClickHandler : PixabayImagesListClickHandler? = null
+    private var pixabayImagesListClickHandler: PixabayImagesListClickHandler? = null
     private var imagesList = ArrayList<PixabayImage>()
 
-    fun setData(newImagesList : List<PixabayImage>){
+    fun setData(newImagesList: List<PixabayImage>) {
         val diffCallback = PixabayImagesDiffCallback(imagesList, newImagesList)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         imagesList.clear()
@@ -25,7 +25,7 @@ class FeedListAdapter : RecyclerView.Adapter<FeedListAdapter.PixabayImageItemVie
         diffResult.dispatchUpdatesTo(this)
     }
 
-    fun setPixabayImagesListClickHandler(pixabayImagesListClickHandler : PixabayImagesListClickHandler?){
+    fun setPixabayImagesListClickHandler(pixabayImagesListClickHandler: PixabayImagesListClickHandler?) {
         this.pixabayImagesListClickHandler = pixabayImagesListClickHandler
     }
 
@@ -45,9 +45,19 @@ class FeedListAdapter : RecyclerView.Adapter<FeedListAdapter.PixabayImageItemVie
         fun bindTo(pixabayImageItem: PixabayImage) {
             itemView.apply {
                 Glide.with(context).load(pixabayImageItem.getPreviewImage()).into(itemImageView)
-                userNameTextView.text = pixabayImageItem.user
-                tagsTextView.text = pixabayImageItem.tags
-                    setOnClickListener {
+                userNameTextView.text = String.format(
+                    context.getString(
+                        R.string.user_name_item,
+                        pixabayImageItem.user
+                    )
+                )
+                tagsTextView.text = String.format(
+                    context.getString(
+                        R.string.tags_item,
+                        pixabayImageItem.tags
+                    )
+                )
+                setOnClickListener {
                     val clickedImage = imagesList[adapterPosition]
                     pixabayImagesListClickHandler?.onPixabayImageClicked(clickedImage)
                 }
@@ -55,7 +65,7 @@ class FeedListAdapter : RecyclerView.Adapter<FeedListAdapter.PixabayImageItemVie
         }
     }
 
-    public interface PixabayImagesListClickHandler{
+    public interface PixabayImagesListClickHandler {
         fun onPixabayImageClicked(pixabayImage: PixabayImage)
     }
 }

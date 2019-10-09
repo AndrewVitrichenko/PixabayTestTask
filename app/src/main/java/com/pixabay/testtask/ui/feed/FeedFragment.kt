@@ -56,7 +56,7 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         listenViewModelEvents()
-        initSeachView()
+        initSearchView()
         if (arguments != null) {
             val initialSearchText = arguments!!.getString(INITIAL_SEARCH_TEXT)
             searchView.setQuery(initialSearchText,false)
@@ -67,7 +67,7 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
 
     }
 
-    private fun initSeachView() {
+    private fun initSearchView() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextChange(newText: String?): Boolean  = false
 
