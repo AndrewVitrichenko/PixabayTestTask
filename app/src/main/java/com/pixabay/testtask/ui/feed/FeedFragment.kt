@@ -1,7 +1,6 @@
 package com.pixabay.testtask.ui.feed
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,8 @@ import com.pixabay.testtask.ui.base.BaseFragment
 import com.pixabay.testtask.ui.details.DetailsFragment
 import com.pixabay.testtask.ui.feed.list.FeedListAdapter
 import com.pixabay.testtask.util.getData
+import com.pixabay.testtask.util.getMessage
+import com.pixabay.testtask.util.getThrowable
 import kotlinx.android.synthetic.main.fragment_feed.*
 import javax.inject.Inject
 
@@ -55,7 +56,10 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         initRecyclerView()
         listenViewModelEvents()
         searchButton.setOnClickListener {
-            feedListAdapter.setData(ArrayList())
+            val text = searchEditText.text.toString()
+            if (!text.isEmpty()){
+                feedListAdapter.setData(ArrayList())
+            }
             feedViewModel.searchImagesByText(searchEditText.text.toString())
         }
         if (arguments != null) {
@@ -106,7 +110,7 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
             canPerformPerPageLoading = true
         })
         feedViewModel.errorLiveData.observe(viewLifecycleOwner, Observer {
-            handleError(it.getData())
+            handleError(it.getThrowable())
             handleProgressBar(false)
             canPerformPerPageLoading = true
         })
@@ -114,7 +118,7 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
             handleProgressBar(true)
         })
         feedViewModel.messageLiveData.observe(viewLifecycleOwner, Observer {
-            super.showMessage(it.getData())
+            super.showMessage(it.getMessage())
             handleProgressBar(false)
             canPerformPerPageLoading = true
         })
