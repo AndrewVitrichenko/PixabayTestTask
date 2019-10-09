@@ -1,8 +1,5 @@
 package com.pixabay.testtask.data.entity
 
-import androidx.annotation.NonNull
-import androidx.recyclerview.widget.DiffUtil
-
 
 data class PixabayImage(
     val id: String?,
@@ -30,18 +27,6 @@ data class PixabayImage(
     val user: String?,
     val userImageURL: String?
 ){
-
-    companion object{
-        val DIFF_CALLBACK: DiffUtil.ItemCallback<PixabayImage> = object : DiffUtil.ItemCallback<PixabayImage>() {
-            override fun areItemsTheSame(@NonNull oldItem: PixabayImage, @NonNull newItem: PixabayImage): Boolean {
-                return oldItem.userId === newItem.userId
-            }
-
-            override fun areContentsTheSame(@NonNull oldItem: PixabayImage, @NonNull newItem: PixabayImage): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
 
     override fun equals(obj: Any?): Boolean {
         if (obj === this)

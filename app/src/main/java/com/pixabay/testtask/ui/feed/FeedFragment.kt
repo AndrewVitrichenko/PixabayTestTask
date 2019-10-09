@@ -1,6 +1,7 @@
 package com.pixabay.testtask.ui.feed
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.entity.PixabayImage
 import com.pixabay.testtask.ui.base.BaseFragment
@@ -25,6 +27,8 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
     private lateinit var feedViewModel: FeedViewModel
 
     private lateinit var feedListAdapter: FeedListAdapter
+
+    private var canPerformPerPageLoading : Boolean = true
 
     companion object {
         val TAG: String = FeedFragment::class.java.simpleName
@@ -56,6 +60,7 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         initRecyclerView()
         listenViewModelEvents()
         searchButton.setOnClickListener {
+            feedListAdapter.setData(ArrayList())
             feedViewModel.searchImagesByText(searchEditText.text.toString())
         }
         if (arguments != null) {
@@ -76,28 +81,56 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         recyclerView.apply {
             feedListAdapter = FeedListAdapter()
             feedListAdapter.setPixabayImagesListClickHandler(this@FeedFragment)
-            layoutManager = LinearLayoutManager(context)
+            val linearLayoutManager = LinearLayoutManager(context)
+            layoutManager = linearLayoutManager
             adapter = feedListAdapter
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    if (dy > 0)
+                    {
+                        val visibleItemCount = linearLayoutManager.getChildCount()
+                        val totalItemCount = linearLayoutManager.getItemCount()
+                        val pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition()
+
+                        if (canPerformPerPageLoading) {
+                            if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
+                                canPerformPerPageLoading = false
+                                feedViewModel.loadNextPage()
+                            }
+                        }
+                    }
+                }
+            })
         }
     }
 
     private fun listenViewModelEvents() {
         feedViewModel.imagesLiveData.observe(viewLifecycleOwner, Observer {
             updateListWithImages(it.getData())
+            handleProgressBar(false)
+            canPerformPerPageLoading = true
         })
         feedViewModel.errorLiveData.observe(viewLifecycleOwner, Observer {
             handleError(it.getData())
+            handleProgressBar(false)
+            canPerformPerPageLoading = true
         })
         feedViewModel.progressLiveData.observe(viewLifecycleOwner, Observer {
-            //todo : show progress
+            handleProgressBar(true)
         })
         feedViewModel.messageLiveData.observe(viewLifecycleOwner, Observer {
             super.showMessage(it.getData())
+            handleProgressBar(false)
+            canPerformPerPageLoading = true
         })
     }
 
+    private fun handleProgressBar(show: Boolean) {
+        progressBar.visibility = if (show) View.VISIBLE else View.GONE
+    }
+
     private fun updateListWithImages(imagesList: List<PixabayImage>) {
-        feedListAdapter.submitList(imagesList)
+        feedListAdapter.setData(imagesList)
     }
 
     private fun handleError(throwable: Throwable) {
