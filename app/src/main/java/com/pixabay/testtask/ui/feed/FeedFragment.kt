@@ -88,8 +88,8 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     if (dy > 0)
                     {
-                        val visibleItemCount = linearLayoutManager.getChildCount()
-                        val totalItemCount = linearLayoutManager.getItemCount()
+                        val visibleItemCount = linearLayoutManager.childCount
+                        val totalItemCount = linearLayoutManager.itemCount
                         val pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition()
 
                         if (canPerformPerPageLoading) {
