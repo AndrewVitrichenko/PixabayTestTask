@@ -9,4 +9,6 @@ interface SchedulerProvider {
     fun ui(): Scheduler
 
     fun computation(): Scheduler
+
+    fun trampoline() : Scheduler
 }

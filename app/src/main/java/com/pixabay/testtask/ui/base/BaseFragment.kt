@@ -15,13 +15,14 @@ abstract class BaseFragment : DaggerFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         initNavigationHandler()
+        initMessageHandler()
     }
 
     private fun initNavigationHandler() {
         if (activity is IFragmentNavigationHandler) {
             navigationHandler = activity as IFragmentNavigationHandler
         } else {
-            throw Exception("IFragmentNavigationHandler not implemented")
+            throw Exception("IFragmentNavigationHandler is not implemented")
         }
     }
 
@@ -29,7 +30,7 @@ abstract class BaseFragment : DaggerFragment() {
         if (activity is IMessageHandler) {
             messageHandler = activity as IMessageHandler
         } else {
-            throw Exception("IMessageHandler not implemented")
+            throw Exception("IMessageHandler is not implemented")
         }
     }
 

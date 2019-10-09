@@ -52,7 +52,7 @@ class DetailsFragment : BaseFragment() {
         if (pixabayImage == null) {
             throw Exception("Pixabayimage entity is null")
         }
-        Glide.with(context).load(pixabayImage?.largeImageURL).into(pixabayImageView)
+        Glide.with(context).load(pixabayImage?.getImage()).into(pixabayImageView)
         Glide.with(context).load(pixabayImage?.userImageURL).into(userImageView)
         userNameTextView.text = pixabayImage?.user
         tagsTextView.text = pixabayImage?.tags

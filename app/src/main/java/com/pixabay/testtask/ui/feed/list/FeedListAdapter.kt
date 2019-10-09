@@ -44,7 +44,7 @@ class FeedListAdapter : RecyclerView.Adapter<FeedListAdapter.PixabayImageItemVie
 
         fun bindTo(pixabayImageItem: PixabayImage) {
             itemView.apply {
-                Glide.with(context).load(pixabayImageItem.largeImageURL).into(itemImageView)
+                Glide.with(context).load(pixabayImageItem.getPreviewImage()).into(itemImageView)
                 userNameTextView.text = pixabayImageItem.user
                 tagsTextView.text = pixabayImageItem.tags
                     setOnClickListener {
