@@ -26,7 +26,6 @@
                 app:srcCompat="@drawable/ic_like_white_24dp"
                 android:layout_height="24dp"
                 app:layout_constraintStart_toStartOf="@+id/likeCountTextView"
-                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/likeCountTextView"
                 app:layout_constraintEnd_toEndOf="@+id/likeCountTextView"/>
 
@@ -35,19 +34,17 @@
                 android:layout_width="24dp"
                 app:srcCompat="@drawable/ic_favorite_white_24dp"
                 android:layout_height="24dp"
-                app:layout_constraintStart_toEndOf="@+id/likeImageView"
-                app:layout_constraintTop_toTopOf="@+id/likeImageView"
-                app:layout_constraintEnd_toStartOf="@+id/commentImageView"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/favoriteCountTextView"/>
+                app:layout_constraintStart_toStartOf="@+id/favoriteCountTextView"
+                app:layout_constraintBottom_toTopOf="@+id/favoriteCountTextView"
+                app:layout_constraintEnd_toEndOf="@+id/favoriteCountTextView"/>
 
         <ImageView
                 android:id="@+id/commentImageView"
                 android:layout_width="24dp"
                 app:srcCompat="@drawable/ic_comment_white_24dp"
                 android:layout_height="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/commentCountTextView"
                 app:layout_constraintStart_toStartOf="@+id/commentCountTextView"
+                app:layout_constraintBottom_toTopOf="@+id/commentCountTextView"
                 app:layout_constraintEnd_toEndOf="@+id/commentCountTextView"
                 android:layout_marginEnd="8dp"/>
 
@@ -58,8 +55,9 @@
                 android:textColor="#fff"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/favoriteCountTextView"
                 android:layout_marginBottom="8dp"
+                app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintBottom_toBottomOf="@+id/pixabayImageView"/>
 
         <TextView
@@ -68,10 +66,9 @@
                 tools:text="Sample counter"
                 android:textColor="#fff"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/favoriteImageView"
-                app:layout_constraintStart_toStartOf="@+id/favoriteImageView"
-                android:layout_marginStart="8dp"
-                app:layout_constraintHorizontal_bias="0.568" android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/commentCountTextView"
+                app:layout_constraintStart_toEndOf="@+id/likeCountTextView"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/pixabayImageView"/>
 
         <TextView
@@ -80,9 +77,9 @@
                 tools:text="Sample counter"
                 android:textColor="#fff"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/pixabayImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/favoriteCountTextView"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/pixabayImageView"/>
 
         <androidx.cardview.widget.CardView

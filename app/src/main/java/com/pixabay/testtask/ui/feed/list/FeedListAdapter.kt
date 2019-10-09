@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.entity.PixabayImage
+import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.list_feed_item.view.*
 
 
@@ -44,7 +46,9 @@ class FeedListAdapter : RecyclerView.Adapter<FeedListAdapter.PixabayImageItemVie
 
         fun bindTo(pixabayImageItem: PixabayImage) {
             itemView.apply {
-                Glide.with(context).load(pixabayImageItem.getPreviewImage()).into(itemImageView)
+                Glide.with(context).load(pixabayImageItem.getPreviewImage())
+                    .apply(RequestOptions.placeholderOf(R.drawable.image_placeholder))
+                    .into(itemImageView)
                 userNameTextView.text = String.format(
                     context.getString(
                         R.string.user_name_item,

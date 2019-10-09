@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.entity.PixabayImage
 import com.pixabay.testtask.ui.base.BaseFragment
@@ -52,8 +53,10 @@ class DetailsFragment : BaseFragment() {
         if (pixabayImage == null) {
             throw Exception("Pixabayimage entity is null")
         }
-        Glide.with(context).load(pixabayImage?.getImage()).into(pixabayImageView)
-        Glide.with(context).load(pixabayImage?.userImageURL).into(userImageView)
+        Glide.with(context).load(pixabayImage?.getImage())
+            .apply(RequestOptions.placeholderOf(R.drawable.image_placeholder)).into(pixabayImageView)
+        Glide.with(context).load(pixabayImage?.userImageURL)
+            .apply(RequestOptions.placeholderOf(R.drawable.user_placeholder)).into(userImageView)
         userNameTextView.text = String.format(
             context?.getString(
                 R.string.user_name_item,
