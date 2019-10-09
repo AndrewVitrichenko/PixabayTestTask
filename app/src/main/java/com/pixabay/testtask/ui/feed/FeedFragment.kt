@@ -60,6 +60,7 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
             if (!text.isEmpty()){
                 feedListAdapter.setData(ArrayList())
             }
+            hideKeyboard()
             feedViewModel.searchImagesByText(searchEditText.text.toString())
         }
         if (arguments != null) {

@@ -1,11 +1,15 @@
 package com.pixabay.testtask.ui.base
 
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.pixabay.testtask.interfaces.IFragmentNavigationHandler
+import com.pixabay.testtask.interfaces.IKeyboardHandler
 import com.pixabay.testtask.interfaces.IMessageHandler
 import dagger.android.support.DaggerAppCompatActivity
 
-abstract class BaseActivity : DaggerAppCompatActivity(), IFragmentNavigationHandler, IMessageHandler {
+abstract class BaseActivity : DaggerAppCompatActivity(), IFragmentNavigationHandler,
+    IMessageHandler,IKeyboardHandler {
 
     override fun showFragment(fragmentToShow: BaseFragment, addToBackStack: Boolean) {
         supportFragmentManager.let {
@@ -25,6 +29,14 @@ abstract class BaseActivity : DaggerAppCompatActivity(), IFragmentNavigationHand
                 val castedFragment = fragment as BaseFragment
                 it.popBackStack(castedFragment.getFragmentTag(), 0)
             }
+        }
+    }
+
+    override fun hideKeyboard() {
+        val currentFocusedView = currentFocus?.windowToken
+        if (currentFocusedView != null){
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(currentFocusedView, 0)
         }
     }
 
