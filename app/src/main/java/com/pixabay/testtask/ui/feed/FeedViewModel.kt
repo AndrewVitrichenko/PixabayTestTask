@@ -1,8 +1,10 @@
 package com.pixabay.testtask.ui.feed
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.test.espresso.idling.CountingIdlingResource
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.datasource.PixabayDataSource
 import com.pixabay.testtask.data.entity.PixabayImage
@@ -58,6 +60,8 @@ class FeedViewModel @Inject constructor(
         pixabayDataSource.getImagesByText(text, page)
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
+            .doOnSubscribe { countingIdlingResource.increment() }
+            .doFinally { countingIdlingResource.decrement() }
             .subscribe({ pixabayImageList ->
                 images.addAll(pixabayImageList.hits)
                 onImagesReceived(images)
@@ -84,5 +88,12 @@ class FeedViewModel @Inject constructor(
         images.clear()
         compositeDisposable.clear()
     }
+
+    @VisibleForTesting
+    private var countingIdlingResource : CountingIdlingResource =
+        CountingIdlingResource("fetchingImagesIdlingResource")
+
+    @VisibleForTesting
+    val idlingResource get() = countingIdlingResource
 
 }

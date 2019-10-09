@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -152,5 +153,8 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         super.onDestroyView()
         feedListAdapter.setPixabayImagesListClickHandler(null)
     }
+
+    @VisibleForTesting
+    fun getViewModel() : FeedViewModel = feedViewModel
 
 }
