@@ -45,11 +45,6 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
 
     override fun getFragmentTag(): String = TAG
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         feedViewModel = ViewModelProviders.of(this, viewModelFactory).get(FeedViewModel::class.java)
         return inflater.inflate(R.layout.fragment_feed, container, false)

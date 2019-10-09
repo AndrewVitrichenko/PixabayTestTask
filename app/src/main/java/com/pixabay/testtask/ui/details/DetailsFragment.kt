@@ -28,11 +28,6 @@ class DetailsFragment : BaseFragment() {
 
     override fun getFragmentTag(): String  = TAG
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         detailsViewModel = ViewModelProviders.of(this,viewModelFactory).get(DetailsViewModel::class.java)
         return inflater.inflate(R.layout.fragment_details,container,false)
