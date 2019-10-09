@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.datasource.PixabayDataSource
 import com.pixabay.testtask.data.entity.PixabayImage
-import com.pixabay.testtask.data.entity.list.PixabayImagesList
 import com.pixabay.testtask.util.ResourceUtil
 import com.pixabay.testtask.util.Result
 import com.pixabay.testtask.util.SchedulerProvider

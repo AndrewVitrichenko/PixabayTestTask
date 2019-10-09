@@ -1,6 +1,9 @@
 package com.pixabay.testtask.data.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PixabayImage(
     val id: String?,
     val pageURL: String?,
@@ -26,7 +29,7 @@ data class PixabayImage(
     val userId: String?,
     val user: String?,
     val userImageURL: String?
-){
+) : Parcelable {
 
     override fun equals(obj: Any?): Boolean {
         if (obj === this)
