@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">PixabayTestTask</string>
+    <string name="user_title">About user</string>
+
+    <!-- Error messages -->
+    <string name="error_no_results">No results.</string>
+    <string name="error_empty_text">Empty text.</string>
+
+    <!-- Test strings -->
+    <string name="test_string_flowers">flowers</string>
+
+    <!-- List item formats -->
+    <string name="user_name_item">User name : %s</string>
+    <string name="tags_item">Tags : %s</string>
 </resources>
