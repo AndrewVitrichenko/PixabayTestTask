@@ -18,12 +18,12 @@ abstract class BaseActivity : DaggerAppCompatActivity(), IFragmentNavigationHand
             if (fragment == null) {
                 if (!addToBackStack) {
                     it.beginTransaction()
-                        .setCustomAnimations(R.anim.slide_up, R.anim.slide_down)
+                        .setCustomAnimations(R.anim.slide_up, R.anim.slide_down,R.anim.slide_up, R.anim.slide_down)
                         .replace(getFragmentContainer(), fragmentToShow, fragmentToShow.getFragmentTag())
                         .commit()
                 } else {
                     it.beginTransaction()
-                        .setCustomAnimations(R.anim.slide_up, R.anim.slide_down)
+                        .setCustomAnimations(R.anim.slide_up, R.anim.slide_down,R.anim.slide_up, R.anim.slide_down)
                         .replace(getFragmentContainer(), fragmentToShow, fragmentToShow.getFragmentTag())
                         .addToBackStack(fragmentToShow.getFragmentTag())
                         .commit()
