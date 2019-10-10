@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+    <dimen name="default_icon_width">24dp</dimen>
+    <dimen name="default_icon_height">24dp</dimen>
+    <dimen name="default_small_margin">8dp</dimen>
+    <dimen name="default_card_elevation">8dp</dimen>
+    <dimen name="default_card_corner_radius">4dp</dimen>
+    <dimen name="default_standart_margin">16dp</dimen>
+
+    <!-- Details screen -->
+    <dimen name="about_user_text_size">24sp</dimen>
+    <dimen name="default_user_photo_width">96dp</dimen>
+    <dimen name="default_user_photo_height">96dp</dimen>
+
+</resources>
