@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.entity.PixabayImage
-import kotlinx.android.synthetic.main.fragment_details.*
 import kotlinx.android.synthetic.main.list_feed_item.view.*
 
 

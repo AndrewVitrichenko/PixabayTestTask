@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.entity.PixabayImage
-import com.pixabay.testtask.ui.base.BaseFragment
-import com.pixabay.testtask.ui.details.DetailsFragment
-import com.pixabay.testtask.ui.feed.list.FeedListAdapter
 import com.pixabay.testtask.data.entity.getData
 import com.pixabay.testtask.data.entity.getMessage
 import com.pixabay.testtask.data.entity.getThrowable
+import com.pixabay.testtask.ui.base.BaseFragment
+import com.pixabay.testtask.ui.details.DetailsFragment
 import com.pixabay.testtask.ui.feed.dialog.DetailsDialogFragment
 import com.pixabay.testtask.ui.feed.dialog.IDetailsDialogFragmentCallback
+import com.pixabay.testtask.ui.feed.list.FeedListAdapter
 import kotlinx.android.synthetic.main.fragment_feed.*
 import javax.inject.Inject
 

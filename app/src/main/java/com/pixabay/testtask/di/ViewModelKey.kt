@@ -1,7 +1,6 @@
 package com.pixabay.testtask.di
 
 import androidx.lifecycle.ViewModel
-import com.pixabay.testtask.ui.feed.FeedViewModel
 import dagger.MapKey
 import kotlin.reflect.KClass
 

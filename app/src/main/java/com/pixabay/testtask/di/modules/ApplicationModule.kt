@@ -2,9 +2,9 @@ package com.pixabay.testtask.di.modules
 
 import android.content.Context
 import com.pixabay.testtask.PixabayApplication
-import javax.inject.Singleton
 import dagger.Binds
 import dagger.Module
+import javax.inject.Singleton
 
 
 @Module

@@ -2,7 +2,6 @@ package com.pixabay.testtask.data.datasource
 
 import com.pixabay.testtask.BuildConfig
 import com.pixabay.testtask.data.PixabayApi
-import com.pixabay.testtask.data.datasource.PixabayDataSource
 import com.pixabay.testtask.data.entity.PixabayImage
 import com.pixabay.testtask.data.entity.PixabayImageApi
 import com.pixabay.testtask.data.entity.list.PixabayImagesList

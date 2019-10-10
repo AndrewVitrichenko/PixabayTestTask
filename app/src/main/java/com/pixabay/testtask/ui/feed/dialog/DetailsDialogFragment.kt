@@ -1,11 +1,11 @@
 package com.pixabay.testtask.ui.feed.dialog
 
-import androidx.fragment.app.DialogFragment
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import com.pixabay.testtask.R
 import com.pixabay.testtask.data.entity.PixabayImage
 
