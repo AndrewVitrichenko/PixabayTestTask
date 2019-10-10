@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">PixabayTestTask</string>
-    <string name="user_title">About user</string>
 
     <!-- Error messages -->
     <string name="error_no_results">No results.</string>
@@ -12,4 +11,8 @@
     <!-- List item formats -->
     <string name="user_name_item">User name : %s</string>
     <string name="tags_item">Tags : %s</string>
+
+    <!-- Details -->
+    <string name="user_title">About user</string>
+    <string name="question_open_details">Do you want to see details?</string>
 </resources>

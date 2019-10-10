@@ -19,10 +19,13 @@ import com.pixabay.testtask.ui.feed.list.FeedListAdapter
 import com.pixabay.testtask.data.entity.getData
 import com.pixabay.testtask.data.entity.getMessage
 import com.pixabay.testtask.data.entity.getThrowable
+import com.pixabay.testtask.ui.feed.dialog.DetailsDialogFragment
+import com.pixabay.testtask.ui.feed.dialog.IDetailsDialogFragmentCallback
 import kotlinx.android.synthetic.main.fragment_feed.*
 import javax.inject.Inject
 
-class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandler {
+class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandler,
+    IDetailsDialogFragmentCallback {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -83,9 +86,23 @@ class FeedFragment : BaseFragment(), FeedListAdapter.PixabayImagesListClickHandl
         })
     }
 
+    override fun onUserApproval(pixabayImage: PixabayImage?) {
+        if (pixabayImage != null){
+            val detailsFragment = DetailsFragment.newInstance(pixabayImage)
+            showFragment(detailsFragment,true)
+        } else{
+            throw Exception("Last clicked image is null")
+        }
+    }
+
+    override fun onUserDenial(pixabayImage: PixabayImage?) {
+
+    }
+
+
     override fun onPixabayImageClicked(pixabayImage: PixabayImage) {
-        val detailsFragment = DetailsFragment.newInstance(pixabayImage)
-        showFragment(detailsFragment,true)
+        val detailsFragmentDialogFragment = DetailsDialogFragment.newInstance(pixabayImage)
+        detailsFragmentDialogFragment.show(childFragmentManager,DetailsDialogFragment.TAG)
     }
 
     private fun initRecyclerView() {

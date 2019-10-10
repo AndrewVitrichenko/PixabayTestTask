@@ -31,7 +31,7 @@ class FeedFragmentTest {
     lateinit var idlingResource : CountingIdlingResource
 
     @Test
-    fun fetchingImagesAndPopulateListWithItemsAndListIsNotEmpty(){
+    fun fetchingImagesAndPopulateListWithItemsAndListIsNotEmptyAndClickOnImageInfoShown(){
         val feedFragment = mActivityRule.activity
             .supportFragmentManager.findFragmentByTag(FeedFragment.TAG) as FeedFragment
 
@@ -52,8 +52,9 @@ class FeedFragmentTest {
             RecyclerViewActions.actionOnItemAtPosition
             <FeedListAdapter.PixabayImageItemViewHolder>(0, click()))
 
-        onView(withId(R.id.pixabayImageView)).check(matches(isDisplayed()))
+        onView(withId(android.R.id.button1)).perform(click())
 
+        onView(withId(R.id.pixabayImageView)).check(matches(isDisplayed()))
     }
 
     @After
